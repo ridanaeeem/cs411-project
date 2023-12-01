@@ -2,20 +2,19 @@ import express, { application } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import recipeRoutes from "./routes/recipes.js";
+import dotenv from "dotenv";
+dotenv.config({ path: "config.env" });
 
 // initialize app
 const app = express();
 
+app.use(cors());
 // middleware
 // every route inside of recipes will start with /recipes
 app.use("/recipes", recipeRoutes);
 
-// app.use(express.json({ limit: "30mb", extended: true }));
-// app.use(express.urlencoded({ limit: "30mb", extended: true }));
 
-app.use(cors());
-
-const ATLAS_URI = "mongodb+srv://ridan:Y5ZHDdzFSsvm9ph7@easierrecipe.vvqtsfg.mongodb.net/?retryWrites=true&w=majority";
+const ATLAS_URI = process.env.ATLAS_URI;
 const PORT = process.env.PORT || 5000;
 
 // connect to mongo database

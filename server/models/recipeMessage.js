@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 const recipeSchema = mongoose.Schema({
 	title: String,
 	creator: String,
+	description: String,
 	ingredients: [String],
 	instructions: [String],
 	tags: [String],
@@ -14,7 +15,7 @@ const recipeSchema = mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
-	postDatet: {
+	postDate: {
 		type: Date,
 		default: new Date(),
 	},
