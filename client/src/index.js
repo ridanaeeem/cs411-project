@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux"; //keep track of global store so we can see states from anywhere in app
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, compose } from "redux";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import thunk from "redux-thunk";
 
 import reducers from "./reducers";
@@ -15,8 +16,10 @@ const store = configureStore({
 
 // wrap app in provider and pass the store we just created as prop
 ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
+	<GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</GoogleOAuthProvider>,
 	document.getElementById("root")
 );
