@@ -14,31 +14,12 @@ const store = configureStore({
 	middleware: [thunk],
 });
 
-// // Assuming this script is in your project root
-// const fs = require("fs");
-// const path = require("path");
-
-// const envPath = path.join("config", ".env");
-
-// // Read the contents of the .env file
-// const envContents = fs.readFileSync(envPath, "utf8");
-
-// // Parse the contents into key-value pairs
-// const envVariables = envContents
-// 	.split("\n")
-// 	.filter((line) => line.trim() !== "")
-// 	.reduce((acc, line) => {
-// 		const [key, value] = line.split("=");
-// 		acc[key.trim()] = value.trim();
-// 		return acc;
-// 	}, {});
-
-// Access the environment variables in your code
-
+// get google client id from .env file
+const googleID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 // wrap app in provider and pass the store we just created as prop
 ReactDOM.render(
-	<GoogleOAuthProvider clientId={REACT_APP_GOOGLE_CLIENT_ID}>
+	<GoogleOAuthProvider clientId={googleID}>
 		<Provider store={store}>
 			<App />
 		</Provider>
