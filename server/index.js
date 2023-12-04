@@ -7,12 +7,10 @@ dotenv.config({ path: "config.env" });
 
 // initialize app
 const app = express();
-
 app.use(cors());
 // middleware
 // every route inside of recipes will start with /recipes
 app.use("/recipes", recipeRoutes);
-
 
 const ATLAS_URI = process.env.ATLAS_URI;
 const PORT = process.env.PORT || 5000;

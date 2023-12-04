@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 
 export function Login() {
+	const onSuccessRef = (credentialResponse) => {
+		console.log(credentialResponse);
+	};
+
+	const onError = () => {
+		console.log("error");
+	};
 	return (
-		<GoogleLogin>
-			onSuccess=
-			{(credientialResponse) => {
-				console.log(credientialResponse);
-			}}
-			onError=
-			{() => {
-				console.log("error");
-			}}
-		</GoogleLogin>
+		<>
+			<GoogleLogin onSuccess={onSuccessRef} onError={onError} />
+		</>
 	);
 }
 
