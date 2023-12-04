@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux"; //keep track of global store so we can see states from anywhere in app
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, compose } from "redux";
@@ -8,6 +9,15 @@ import thunk from "redux-thunk";
 
 import reducers from "./reducers";
 import App from "./App";
+
+import Root from "./routes/root";
+
+const router = createBrowserRouter([
+	{
+		path: "/",
+		element: <Root />,
+	},
+]);
 
 const store = configureStore({
 	reducer: reducers,
@@ -34,13 +44,13 @@ const store = configureStore({
 // 	}, {});
 
 // Access the environment variables in your code
+const REACT_APP_GOOGLE_CLIENT_ID = "454849403965-9tde950q45nbc7me6l8njgvo6osomjcb.apps.googleusercontent.com";
 
-
-// wrap app in provider and pass the store we just created as prop
+// wrap root in provider and pass the store we just created as prop
 ReactDOM.render(
 	<GoogleOAuthProvider clientId={REACT_APP_GOOGLE_CLIENT_ID}>
 		<Provider store={store}>
-			<App />
+			<RouterProvider router={router}>{/* <App /> */}</RouterProvider>
 		</Provider>
 	</GoogleOAuthProvider>,
 	document.getElementById("root")
