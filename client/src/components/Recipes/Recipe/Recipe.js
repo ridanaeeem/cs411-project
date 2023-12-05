@@ -1,11 +1,7 @@
 import React from "react";
 
-const Recipe = () => {
-	return (
-		<div>
-			<h1>Recipe</h1>
-		</div>
-	);
+const Recipe = ({ recipe }) => {
+	return <h1>{recipe.title}</h1>;
 };
 
 export default Recipe;

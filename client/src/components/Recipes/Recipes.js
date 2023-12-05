@@ -6,13 +6,20 @@ import Recipe from "./Recipe/Recipe";
 const Recipes = () => {
 	const recipes = useSelector((state) => state.recipes);
 
-	console.log(recipes);
+	const recipeItems = recipes.map((recipe) => {
+		return (
+			<li key={recipe._id}>
+				<Recipe recipe={recipe} />
+			</li>
+		);
+	});
 
-	return (
+	return !recipes.length ? (
+		<h1>No recipes yet!</h1>
+	) : (
 		<>
 			<h1>Recipes</h1>
-			<Recipe />
-			<Recipe />
+			<ul>{recipeItems}</ul>
 		</>
 	);
 };
