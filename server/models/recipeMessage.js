@@ -4,13 +4,30 @@ import mongoose from "mongoose";
 // default number of likes is zero
 // default date is current date
 const recipeSchema = mongoose.Schema({
-	title: String,
-	creator: String,
-	description: String,
-	ingredients: [String],
-	instructions: [String],
-	tags: [String],
-	recipePhoto: String,
+	title: {
+		type: String,
+		default: "",
+	},
+	description: {
+		type: String,
+		default: "",
+	},
+	ingredients: {
+		type: [String],
+		default: undefined,
+	},
+	instructions: {
+		type: [String],
+		default: undefined,
+	},
+	tags: {
+		type: [String],
+		default: undefined,
+	},
+	recipePhoto: {
+		type: String,
+		default: "",
+	},
 	likes: {
 		type: Number,
 		default: 0,
@@ -18,6 +35,10 @@ const recipeSchema = mongoose.Schema({
 	postDate: {
 		type: Date,
 		default: new Date(),
+	},
+	creator: {
+		type: String,
+		default: "",
 	},
 });
 

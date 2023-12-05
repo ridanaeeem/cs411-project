@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import FileBase from "react-file-base64";
+import { useDispatch } from "react-redux";
+import { createRecipe } from "../../actions/recipes";
 
 const Form = () => {
 	const [recipeData, setRecipeData] = useState({
@@ -10,7 +13,22 @@ const Form = () => {
 		recipePhoto: "",
 	});
 
-	const handleSubmit = () => {};
+	// so we can dispatch the actions
+	const dispatch = useDispatch();
+
+	const handleSubmit = (e) => {
+		console.log("submit");
+		// send over post request with the data entered by user
+		// so the form doesn't clear when the user submits, in case error checking needs to happen
+		e.preventDefault();
+		// dispatch action to create the recipe
+		console.log("Recipe Data:", recipeData);
+		dispatch(createRecipe(recipeData));
+	};
+
+	const clear = () => {
+		console.log("clear");
+	};
 
 	return (
 		<>
@@ -22,11 +40,11 @@ const Form = () => {
 					value={recipeData.title}
 					onChange={(e) => setRecipeData({ ...recipeData, title: e.target.value })}></input>
 				<br></br>
-				<label for="titleInput">Description </label>
+				<label for="descriptionInput">Description </label>
 				<br></br>
 				<input
 					id="descriptionInput"
-					value={recipeData.creator}
+					value={recipeData.description}
 					onChange={(e) => setRecipeData({ ...recipeData, description: e.target.value })}></input>
 				<br></br>
 				<label for="ingredientsInput">Ingredients </label>
@@ -50,12 +68,17 @@ const Form = () => {
 					value={recipeData.tags}
 					onChange={(e) => setRecipeData({ ...recipeData, tags: e.target.value })}></input>
 				<br></br>
-				<label for="photoInput">Photo URL</label>
-                <br></br>
-				<input
-					id="photoInput"
-					value={recipeData.recipePhoto}
-					onChange={(e) => setRecipeData({ ...recipeData, recipePhoto: e.target.value })}></input>
+				<label for="photoInput">Photo Upload</label>
+				<br></br>
+				<div>
+					<FileBase
+						id="photoInput"
+						type="file"
+						multiple={false}
+						onDone={(base64) => setRecipeData({ ...recipeData, recipePhoto: base64 })}></FileBase>
+				</div>
+				<button onClick={handleSubmit}>Submit</button>
+				<button onClick={clear}>Clear</button>
 			</form>
 		</>
 	);
