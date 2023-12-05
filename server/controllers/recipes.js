@@ -27,7 +27,7 @@ export const createRecipe = async (req, res) => {
 		// save new recipe to database
 		await newRecipe.save();
 		console.log("Incoming Request Body:", req.body);
-
+		console.log("Recipe created:", newRecipe);
 		// send new recipe as a response
 		res.status(201).json(newRecipe);
 	} catch (error) {

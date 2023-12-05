@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux"; //keep track of global store so we can see states from anywhere in app
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, compose } from "redux";
@@ -18,11 +18,12 @@ const store = configureStore({
 const googleID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 // wrap app in provider and pass the store we just created as prop
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
 	<GoogleOAuthProvider clientId={googleID}>
 		<Provider store={store}>
 			<App />
 		</Provider>
-	</GoogleOAuthProvider>,
-	document.getElementById("root")
+	</GoogleOAuthProvider>
 );

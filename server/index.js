@@ -7,11 +7,11 @@ dotenv.config({ path: "config.env" });
 
 // initialize app
 const app = express();
+// CORS middleware to handle cross-origin requests
+app.use(cors());
 // parse JSON data
 // express.json() is a method inbuilt in express to recognize the incoming Request Object as a JSON Object
 app.use(express.json());
-// CORS middleware to handle cross-origin requests
-app.use(cors());
 // every route inside of recipes will start with /recipes
 app.use("/recipes", recipeRoutes);
 

@@ -68,7 +68,8 @@ const Form = () => {
 					value={recipeData.tags}
 					onChange={(e) => setRecipeData({ ...recipeData, tags: e.target.value })}></input>
 				<br></br>
-				<label for="photoInput">Photo Upload</label>
+				{/* photo upload currently does not work - table functionality for now  */}
+				{/* <label for="photoInput">Photo Upload</label>
 				<br></br>
 				<div>
 					<FileBase
@@ -76,7 +77,7 @@ const Form = () => {
 						type="file"
 						multiple={false}
 						onDone={(base64) => setRecipeData({ ...recipeData, recipePhoto: base64 })}></FileBase>
-				</div>
+				</div> */}
 				<button onClick={handleSubmit}>Submit</button>
 				<button onClick={clear}>Clear</button>
 			</form>
