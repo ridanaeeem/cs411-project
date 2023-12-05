@@ -3,14 +3,14 @@ import { useSelector } from "react-redux"; //allows us to fetch data from global
 
 import Recipe from "./Recipe/Recipe";
 
-const Recipes = () => {
+export function Recipes() {
 	const recipes = useSelector((state) => state.recipes);
 
 	const recipeItems = recipes.map((recipe) => {
 		return (
-			<li key={recipe._id}>
+			<div key={recipe._id}>
 				<Recipe recipe={recipe} />
-			</li>
+			</div>
 		);
 	});
 
@@ -19,9 +19,9 @@ const Recipes = () => {
 	) : (
 		<>
 			<h1>Recipes</h1>
-			<ul>{recipeItems}</ul>
+			<div>{recipeItems}</div>
 		</>
 	);
-};
+}
 
 export default Recipes;

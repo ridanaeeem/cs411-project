@@ -3,7 +3,7 @@ import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createRecipe } from "../../actions/recipes";
 
-const Form = () => {
+export function Form(){
 	const [recipeData, setRecipeData] = useState({
 		title: "",
 		description: "",
