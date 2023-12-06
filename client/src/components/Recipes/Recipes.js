@@ -3,13 +3,14 @@ import { useSelector } from "react-redux"; //allows us to fetch data from global
 
 import Recipe from "./Recipe/Recipe";
 
-export function Recipes() {
+export function Recipes({ setCurrentId }) {
+	// returns all the recipes 
 	const recipes = useSelector((state) => state.recipes);
 
 	const recipeItems = recipes.map((recipe) => {
 		return (
 			<div key={recipe._id}>
-				<Recipe recipe={recipe} />
+				<Recipe recipe={recipe} setCurrentId={setCurrentId} />
 			</div>
 		);
 	});

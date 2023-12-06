@@ -1,9 +1,10 @@
+import mongoose from "mongoose";
 import RecipeMessage from "../models/recipeMessage.js";
 
 // all handlers for /recipes route
+// asynchronous function because we are getching/saving data to the database
 
-// getting a post
-// asynchronous function because we are fetching data from the database
+// getting a recipe
 export const getRecipes = async (req, res) => {
 	try {
 		// get all the recipes from the database
@@ -15,8 +16,7 @@ export const getRecipes = async (req, res) => {
 	}
 };
 
-// creating a post
-// asynchronous function because we are saving data to the database
+// creating a recipe
 export const createRecipe = async (req, res) => {
 	// req.body is the data sent by client to API (recipe data from form)
 	const recipe = req.body;
@@ -33,4 +33,19 @@ export const createRecipe = async (req, res) => {
 	} catch (error) {
 		res.status(409).json({ message: error.message });
 	}
+};
+
+//updating a recipe
+export const updateRecipe = async (req, res) => {
+	// the request is made like recipes/id, and the id is stored in mongo as _id
+	const { id: _id } = req.params;
+	// backend receives the recipe from frontend
+	const recipe = req.body;
+	// check to make sure the id actually exists
+	if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("There is no recipe with that id");
+
+	// if the id does exist, update
+	// need to do new: true because by default the document is returned pre-update, this returns post-update
+	const updatedRecipe = await RecipeMessage.findByIdAndUpdate(_id, recipe, { new: true });
+	res.json(updatedRecipe);
 };

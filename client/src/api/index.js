@@ -8,3 +8,5 @@ export const fetchRecipes = () => axios.get(url);
 
 // send data from frontend to mongodb
 export const createRecipe = (newRecipe) => axios.post(url, newRecipe);
+
+export const updateRecipe = (id, updatedRecipe) => axios.patch(`${url}/${id}`, updatedRecipe)

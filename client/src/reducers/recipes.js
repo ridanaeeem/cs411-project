@@ -9,10 +9,12 @@ export default (recipes = [], action) => {
 		// fetching all the recipes
 		case "FETCH_ALL":
 			// return [...recipes, action.payload]; // the brackets were messing with the format, seems to work without them
-			return recipes, action.payload; // all the recipes
+			return action.payload; // all the recipes
 		// creating a new recipe, and the recipe is stored in the payload
 		case "CREATE":
 			return [...recipes, action.payload];
+		case "UPDATE":
+			return recipes.map((recipe) => (recipe._id === action.payload._id ? action.payload : recipe));
 		default:
 			return recipes;
 	}

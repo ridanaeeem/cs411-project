@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import FileBase from "react-file-base64";
-import { useDispatch } from "react-redux";
-import { createRecipe } from "../../actions/recipes";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { createRecipe, updateRecipe } from "../../actions/recipes";
+// import FileBase from "react-file-base64"; for photos, try to make this work later
 
-export function Form() {
+export function Form({ currentId, setCurrentId }) {
 	// set the initial state of the recipe data to be empty strings
 	const [recipeData, setRecipeData] = useState({
 		title: "",
@@ -14,15 +14,27 @@ export function Form() {
 		recipePhoto: "",
 	});
 
+	// finding recipe with current id
+	const recipe = useSelector((state) => (currentId ? state.recipes.find((r) => r._id == currentId) : null));
+
 	// so we can dispatch the actions
 	const dispatch = useDispatch();
 
+	// run when recipe changes from null to the current recipe
+	useEffect(() => {
+		if (recipe) setRecipeData(recipe);
+	}, [recipe]);
+
 	// when the user clicks the submit button, validate the data before dispatching
 	function validate(recipeData) {
+		// so this doesnt work, figure this out
+		if (currentId) {
+			return true;
+		}
 		// go through each property in the recipeData object
 		for (var prop in recipeData) {
 			// maxLength and required is covered by the HTML input fields
-			// check for special characters next 
+			// check for special characters next
 			if (Object.prototype.hasOwnProperty.call(recipeData, prop)) {
 				if (recipeData[prop].includes("<") || recipeData[prop].includes(">")) {
 					alert(`Please enter a valid ${prop}, special characters (<, >, {, }) not allowed`);
@@ -44,7 +56,12 @@ export function Form() {
 		// dispatch action to create the recipe
 		console.log("Recipe Data:", recipeData);
 		if (validate(recipeData)) {
-			dispatch(createRecipe(recipeData));
+			// if a currentId was passed into this, then the user wants to update an existing recipe
+			if (currentId) {
+				dispatch(updateRecipe(currentId, recipeData));
+			} else {
+				dispatch(createRecipe(recipeData));
+			}
 		} else {
 			console.log("Error");
 		}
@@ -55,6 +72,7 @@ export function Form() {
 	// when the user clicks the clear button, clear the form
 	const handleClear = (e) => {
 		e.preventDefault();
+		setCurrentId(null);
 		setRecipeData({
 			title: "",
 			description: "",
