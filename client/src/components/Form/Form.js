@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { createRecipe } from "../../actions/recipes";
 
 export function Form() {
+	// set the initial state of the recipe data to be empty strings
 	const [recipeData, setRecipeData] = useState({
 		title: "",
 		description: "",
@@ -18,15 +19,16 @@ export function Form() {
 
 	// when the user clicks the submit button, validate the data before dispatching
 	function validate(recipeData) {
-		// map recipedata
+		// go through each property in the recipeData object
 		for (var prop in recipeData) {
-			// go through each property in the recipeData object
+			// maxLength and required is covered by the HTML input fields
+			// check for special characters next 
 			if (Object.prototype.hasOwnProperty.call(recipeData, prop)) {
 				if (recipeData[prop].includes("<") || recipeData[prop].includes(">")) {
-					alert(`Please enter a valid ${prop}, no special characters (<, >, {, }) allowed`);
+					alert(`Please enter a valid ${prop}, special characters (<, >, {, }) not allowed`);
 					return false;
 				} else if (recipeData[prop].includes("{") || recipeData[prop].includes("}")) {
-					alert(`Please enter a valid ${prop}, no special characters (<, >, {, }) allowed`);
+					alert(`Please enter a valid ${prop}, special characters (<, >, {, }) not allowed`);
 					return false;
 				}
 			}
@@ -46,6 +48,8 @@ export function Form() {
 		} else {
 			console.log("Error");
 		}
+		// clear the form after recipe data is sent
+		handleClear(e);
 	};
 
 	// when the user clicks the clear button, clear the form
@@ -72,7 +76,7 @@ export function Form() {
 					value={recipeData.title}
 					onChange={(e) => setRecipeData({ ...recipeData, title: e.target.value })}
 					required
-					maxlength="50"
+					maxLength="50"
 					form="recipeForm"
 				/>
 				<br></br>
@@ -83,7 +87,7 @@ export function Form() {
 					value={recipeData.description}
 					onChange={(e) => setRecipeData({ ...recipeData, description: e.target.value })}
 					required
-					maxlength="300"
+					maxLength="300"
 					form="recipeForm"
 				/>
 				<br></br>
@@ -94,7 +98,7 @@ export function Form() {
 					value={recipeData.ingredients}
 					onChange={(e) => setRecipeData({ ...recipeData, ingredients: e.target.value })}
 					required
-					maxlength="50"
+					maxLength="50"
 					form="recipeForm"
 				/>
 				<br></br>
@@ -105,7 +109,7 @@ export function Form() {
 					value={recipeData.instructions}
 					onChange={(e) => setRecipeData({ ...recipeData, instructions: e.target.value })}
 					required
-					maxlength="200"
+					maxLength="200"
 					form="recipeForm"
 				/>
 				<br></br>
@@ -115,10 +119,10 @@ export function Form() {
 					id="tagsInput"
 					value={recipeData.tags}
 					onChange={(e) => setRecipeData({ ...recipeData, tags: e.target.value })}
-					maxlength="20"
+					maxLength="20"
 				/>
 				<br></br>
-				{/* photo upload currently does not work - table functionality for now  */}
+				{/* photo upload currently does not work - table this functionality for now  */}
 				{/* <label for="photoInput">Photo Upload</label>
 				<br></br>
 				<div>
