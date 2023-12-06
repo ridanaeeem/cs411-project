@@ -1,27 +1,22 @@
 import React, { useEffect } from "react";
-import Recipes from "./components/Recipes/Recipes";
-import Form from "./components/Form/Form";
-import { useDispatch } from "react-redux";
-import { getRecipes } from "./actions/recipes";
-import { Login } from "./components/Login";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./components/pages/Home";
+import { Dashboard } from "./components/pages/Dashboard";
+import { About } from "./components/pages/About";
+import { Profile } from "./components/pages/Profile";
+import { Recipe } from "./components/pages/Recipe";
 
 const App = () => {
-	// dispatch an action (getRecipes) to the redux store
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(getRecipes());
-	}, [dispatch]);
-
 	return (
-		<>
-			<h1>Main Dash</h1>
-			<div>
-				<Recipes />
-				<Form />
-				<Login></Login>
-			</div>
-		</>
+		<Router>
+			<Routes>
+				<Route path="/" Component={Home} />
+				<Route path="/recipes" Component={Dashboard} />
+				<Route path="/about" Component={About} />
+				<Route path="/:username" Component={Profile} />
+				<Route path="/:username/:title" Component={Recipe} />
+			</Routes>
+		</Router>
 	);
 };
 
