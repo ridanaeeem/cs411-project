@@ -15,7 +15,7 @@ export function About() {
 
 	return (
 		<>
-			<h1>about page :3</h1>
+			<h1>about page</h1>
 			<div></div>
 		</>
 	);

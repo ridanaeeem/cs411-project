@@ -7,6 +7,7 @@ import { About } from "./components/pages/About";
 import { Profile } from "./components/pages/Profile";
 import { Recipe } from "./components/pages/Recipe";
 import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				<Route path="/:username" Component={Profile} />
 				<Route path="/:username/:title" Component={Recipe} />
 			</Routes>
+			<Footer />
 		</Router>
 	);
 };
