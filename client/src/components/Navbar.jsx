@@ -16,7 +16,6 @@ export function Navbar() {
 	return (
 		<StyledNav>
 			<StyledLink to={"/recipes"}>Easier Recipe</StyledLink>
-			<StyledLink to={"/recipes"}>Home</StyledLink>
 			<StyledLink to={"/about"}>About</StyledLink>
 			<StyledLink to={"/:username"}>Profile</StyledLink>
 			<StyledLink to={""}>Sign Out</StyledLink>

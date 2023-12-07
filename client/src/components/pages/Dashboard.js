@@ -3,7 +3,6 @@ import Recipes from "../Recipes/Recipes";
 import Form from "../Form/Form";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
-import { Login } from "../Login";
 
 export function Dashboard() {
 	// dispatch an action (getRecipes) to the redux store
@@ -19,7 +18,6 @@ export function Dashboard() {
 			<div>
 				<Recipes />
 				<Form />
-				<Login></Login>
 			</div>
 		</>
 	);
