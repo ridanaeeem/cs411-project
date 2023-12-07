@@ -8,7 +8,7 @@ export function Recipes() {
 	const recipes = useSelector((state) => state.recipes);
 
 	const recipeItems = recipes.map((recipe) => {
-		const username = "rida";
+		const username = recipe.creator;
 		const title = recipe.title.replace(/\s+/g, "-").toLowerCase();
 		return (
 			<Link key={recipe._id} to={`/${username}/${title}`}>
