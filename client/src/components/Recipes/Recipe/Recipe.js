@@ -14,8 +14,6 @@ export function Recipe({ recipe }) {
 		shortDescription = recipe.description.substring(0, 10) + "...";
 	}
 
-	console.log(recipe.creator);
-
 	return (
 		<RecipeCard>
 			<h1>{recipe.title}</h1>
