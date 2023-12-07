@@ -2,15 +2,18 @@ import React from "react";
 import { useSelector } from "react-redux"; //allows us to fetch data from global redux store
 
 import Recipe from "./Recipe/Recipe";
+import { Link } from "react-router-dom";
 
 export function Recipes() {
 	const recipes = useSelector((state) => state.recipes);
 
 	const recipeItems = recipes.map((recipe) => {
+		const username = "rida";
+		const title = recipe.title.replace(/\s+/g, "-").toLowerCase();
 		return (
-			<div key={recipe._id}>
+			<Link key={recipe._id} to={`/${username}/${title}`}>
 				<Recipe recipe={recipe} />
-			</div>
+			</Link>
 		);
 	});
 
