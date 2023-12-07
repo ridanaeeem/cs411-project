@@ -11,6 +11,7 @@ import App from "./App";
 
 const store = configureStore({
 	reducer: reducers,
+	user: "",
 	middleware: [thunk],
 });
 
