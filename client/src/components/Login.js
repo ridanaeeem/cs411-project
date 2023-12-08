@@ -4,6 +4,10 @@ import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 
 export function Login() {
+	// cool google sign in prompt but it doesnt work all the time
+	/* global google */
+	// google.accounts.id.prompt();
+
 	const [user, setUser] = useState({});
 	const [signedUp, setSignedUp] = useState(false);
 	const dispatch = useDispatch();

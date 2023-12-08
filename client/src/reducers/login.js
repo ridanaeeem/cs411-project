@@ -1,9 +1,9 @@
 const loginReducer = (state = { authData: null }, action) => {
 	switch (action.type) {
+		// save login data in local storage
 		case "LOGIN":
 			localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-			console.log("hiii");
-			return state;
+			return { ...state, authData: action?.data }; 
 		default:
 			return state;
 	}
