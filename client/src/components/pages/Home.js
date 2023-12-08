@@ -87,11 +87,14 @@ export function Home() {
 			</Container>
 			<Subtitle>Our Mission</Subtitle>
 			<SubText>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-				ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-				fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-				deserunt mollit anim id est laborum.
+				We believe cooking should be a seamless and enjoyable experience for everyone, regardless of measurement
+				preferences. Born out of a passion for culinary exploration, this is your go-to destination for
+				hassle-free recipe conversion. Our platform effortlessly transforms recipes between various metric and
+				imperial units, ensuring precision in your culinary endeavors. Say goodbye to the confusion of
+				conflicting measurements and hello to a streamlined cooking process. But that's not all... we go beyond
+				conversion, offering a virtual cookbook to store and organize your favorite recipes. Join us on a
+				journey where precision meets convenience, and every recipe becomes a culinary triumph. Join us, and
+				savor the joy of cooking without boundaries.
 				<br></br>
 				<br></br>
 				Register today
