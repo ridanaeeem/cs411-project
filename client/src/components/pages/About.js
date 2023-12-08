@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Recipes from "../Recipes/Recipes";
+import Recipes from "../Recipes/RecipeCards";
 import Form from "../Form/Form";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";

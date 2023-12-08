@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
-import Recipes from "../Recipes/Recipes";
-import Form from "../Form/Form";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
 import { Login } from "../Login";
 
-export function Recipe() {
+export function Recipe({ curRecipe }) {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
 
@@ -13,9 +11,16 @@ export function Recipe() {
 		dispatch(getRecipes());
 	}, [dispatch]);
 
+	console.log(curRecipe);
 	return (
 		<>
-			<h1>about page :3</h1>
+			<h1>{curRecipe.title}</h1>
+			<h1>{curRecipe.creator}</h1>
+			<h1>{curRecipe.likes}</h1>
+			<h1>{curRecipe.postDate.substring(0, 10)}</h1>
+			<h1>{curRecipe.description}</h1>
+			<h1>{curRecipe.ingredients}</h1>
+			<h1>{curRecipe.instructions}</h1>
 			<div></div>
 		</>
 	);

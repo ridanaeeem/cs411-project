@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Recipes from "../Recipes/Recipes";
+import Recipes from "../Recipes/RecipeCards";
 import Form from "../Form/Form";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
@@ -15,7 +15,7 @@ export function Profile() {
 
 	return (
 		<>
-			<h1>about page :3</h1>
+			<h1>welcome to your main profile page</h1>
 			<div></div>
 		</>
 	);

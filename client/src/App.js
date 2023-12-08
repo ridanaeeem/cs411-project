@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { Home } from "./components/pages/Home";
@@ -8,7 +8,6 @@ import { Profile } from "./components/pages/Profile";
 import { Recipe } from "./components/pages/Recipe";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-
 
 export const AccountForBar = styled.div`
 	background-color: white;
@@ -20,16 +19,22 @@ export const AccountForBar = styled.div`
 `;
 
 const App = () => {
+	const [curRecipe, setCurRecipe] = useState(undefined);
+
 	return (
 		<Router>
 			<Navbar />
 			<AccountForBar />
 			<Routes>
 				<Route path="/" Component={Home} />
-				<Route path="/recipes" Component={Dashboard} />
+				<Route path="/recipes" element={<Dashboard curRecipe={curRecipe} setCurRecipe={setCurRecipe} />} />
 				<Route path="/about" Component={About} />
 				<Route path="/:username" Component={Profile} />
-				<Route path="/:username/:title" Component={Recipe} />
+				<Route
+					path="/:username/:title"
+					element={<Recipe curRecipe={curRecipe} setCurRecipe={setCurRecipe} />}
+				/>
+				{/* <Route path="/:username/:title" element={<Recipe recipe={recipe} />} /> */}
 			</Routes>
 			<Footer />
 		</Router>
