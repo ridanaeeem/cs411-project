@@ -9,10 +9,21 @@ import { Recipe } from "./components/pages/Recipe";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 
+
+export const AccountForBar = styled.div`
+	background-color: white;
+	height: 5rem;
+	width: 100%;
+	z-index: 10;
+	display: flex;
+	flex-direction: row;
+`;
+
 const App = () => {
 	return (
 		<Router>
 			<Navbar />
+			<AccountForBar />
 			<Routes>
 				<Route path="/" Component={Home} />
 				<Route path="/recipes" Component={Dashboard} />

@@ -10,15 +10,6 @@ export const FullPage = styled.div`
 	height: 100%;
 `;
 
-export const AccountForBar = styled.div`
-	background-color: white;
-	height: 5rem;
-	width: 100%;
-	z-index: 10;
-	display: flex;
-	flex-direction: row;
-`;
-
 const Container = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -75,7 +66,6 @@ export function Home() {
 
 	return (
 		<FullPage>
-			<AccountForBar />
 			<Container>
 				<Left>
 					<Tagline>Cooking just got a whole lot easier.</Tagline>
