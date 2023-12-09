@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
 import { Login } from "../Login";
@@ -56,6 +57,14 @@ const SubText = styled.div`
 	text-align: center;
 `;
 
+const StyledLink = styled(Link)`
+	padding: 10px;
+	text-decoration: none;
+	font-size: 1.5rem;
+	color: black;
+	margin: 0 0.25rem;
+`;
+
 export function Home() {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
@@ -87,7 +96,7 @@ export function Home() {
 				savor the joy of cooking without boundaries.
 				<br></br>
 				<br></br>
-				Register today
+				<StyledLink to={"/about"}>Learn more about us here</StyledLink>
 			</SubText>
 		</FullPage>
 	);

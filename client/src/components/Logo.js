@@ -11,5 +11,5 @@ const StyledLogo = styled(Link)`
 `;
 
 export function Logo() {
-	return <StyledLogo to={"/recipes"}>Easier Recipe</StyledLogo>;
+	return <StyledLogo to={"/"}>Easier Recipe</StyledLogo>;
 }

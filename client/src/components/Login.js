@@ -13,8 +13,6 @@ export function Login() {
 	/* global google */
 	// google.accounts.id.prompt();
 
-	const [user, setUser] = useState({});
-	const [signedUp, setSignedUp] = useState(false);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	// when a user signs in with google, a json web token is returned

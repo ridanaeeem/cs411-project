@@ -3,7 +3,7 @@ const loginReducer = (state = { authData: null }, action) => {
 		// save login data in local storage
 		case "LOGIN":
 			localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-			return { ...state, authData: action?.data }; 
+			return { ...state, authData: action?.data };
 		default:
 			return state;
 	}

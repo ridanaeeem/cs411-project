@@ -44,8 +44,8 @@ export function Navbar() {
 		<StyledNav>
 			<Logo />
 			<StyledTabs>
-				<StyledLink to={"/about"}>About</StyledLink>
-				<StyledLink to={"/:username"}>Profile</StyledLink>
+				<StyledLink to={"/recipes"}>Dashboard</StyledLink>
+				<StyledLink to={"/:username"}>Cookbook</StyledLink>
 				<StyledLink to={""}>Sign Out</StyledLink>
 			</StyledTabs>
 		</StyledNav>
