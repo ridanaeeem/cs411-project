@@ -37,7 +37,7 @@ export function Login() {
 
 	return (
 		<LogInDiv>
-			<GoogleLogin onSuccess={onSuccessRef} onError={onErrorRef} />
+			<GoogleLogin onSuccess={onSuccessRef} onError={onErrorRef} cookiePolicy="single_host_origin" />
 		</LogInDiv>
 	);
 }
