@@ -2,6 +2,7 @@ import express, { application } from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import recipeRoutes from "./routes/recipes.js";
+import userRoutes from "./routes/users.js";
 import dotenv from "dotenv";
 dotenv.config({ path: "config.env" });
 
@@ -14,6 +15,8 @@ app.use(cors());
 app.use(express.json());
 // every route inside of recipes will start with /recipes
 app.use("/recipes", recipeRoutes);
+// same for users
+app.use("/users", userRoutes);
 
 // connect to mongo database
 const ATLAS_URI = process.env.ATLAS_URI;
