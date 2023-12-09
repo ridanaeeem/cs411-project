@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Logo } from "./Logo";
@@ -30,6 +30,16 @@ const StyledTabs = styled.div`
 `;
 
 export function Navbar() {
+	// get user info from the credentials stored in profile in local storage
+	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
+	console.log(user);
+
+	useEffect(() => {
+		// const decodedCredentialResponse = user?.decodedCredentialResponse;
+		setUser(JSON.parse(localStorage.getItem("profile")));
+	}, []);
+
 	return (
 		<StyledNav>
 			<Logo />
