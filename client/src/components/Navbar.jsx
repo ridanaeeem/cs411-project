@@ -61,8 +61,8 @@ export function Navbar() {
 		<StyledNav>
 			<Logo />
 			<StyledTabs>
-				<StyledLink to={"/recipes"}>Dashboard</StyledLink>
-				<StyledLink to={"/:username"}>Cookbook</StyledLink>
+				<StyledLink to={user ? "/recipes" : "/"}>Dashboard</StyledLink>
+				<StyledLink to={user ? "/:username" : "/"}>Cookbook</StyledLink>
 				<StyledLink to={"/"} onClick={logout}>
 					Sign Out
 				</StyledLink>
