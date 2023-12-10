@@ -13,7 +13,7 @@ export function Form() {
 		title: "",
 		description: "",
 		ingredients: "",
-		instructions: "",
+		instructions: [],
 		tags: "",
 		creator: String(email),
 	});
@@ -63,11 +63,56 @@ export function Form() {
 			title: "",
 			description: "",
 			ingredients: "",
-			instructions: "",
+			instructions: [],
 			tags: "",
 			creator: String(email),
 		});
 	};
+
+	// instructions
+	function Instructions() {
+		const [inputFields, setInputFields] = useState([{ instruction: "" }]);
+		const handleFormChange = (index, event) => {
+			let data = [...inputFields];
+			data[index] = event.target.value;
+			setInputFields(data);
+			console.log(inputFields);
+		};
+
+		const addFields = () => {
+			let newfield = { instruction: "" };
+
+			setInputFields([...inputFields, newfield]);
+		};
+		return (
+			<>
+				{inputFields.map((input, index) => {
+					return (
+						<>
+							<div key={index}>
+								{/* <input
+									id="instructionsInput"
+									value={recipeData.instructions}
+									onChange={(e) => setRecipeData({ ...recipeData, instructions[index]: e.target.value })}
+								/> */}
+								<p>Step {index + 1}</p>
+								<input
+									instruction="instruction"
+									onChange={(e) => handleFormChange(index, e)}
+									required
+									maxLength="200"
+									form="recipeForm"
+								/>
+							</div>
+						</>
+					);
+				})}
+				<button type="button" onClick={addFields}>
+					Add another step
+				</button>
+			</>
+		);
+	}
 
 	return (
 		<>
@@ -115,14 +160,7 @@ export function Form() {
 				<label>
 					Instructions
 					<br></br>
-					<input
-						id="instructionsInput"
-						value={recipeData.instructions}
-						onChange={(e) => setRecipeData({ ...recipeData, instructions: e.target.value })}
-						required
-						maxLength="200"
-						form="recipeForm"
-					/>
+					<Instructions />
 				</label>
 				<br></br>
 				<label>
