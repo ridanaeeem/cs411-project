@@ -78,7 +78,7 @@ export function Home() {
 			<Container>
 				<Left>
 					<Tagline>Cooking just got a whole lot easier.</Tagline>
-					<Login />
+					{!JSON.parse(localStorage.getItem("profile")) ? <Login /> : null}
 				</Left>
 				<Right>
 					<Pot src={pot} alt="pot" />

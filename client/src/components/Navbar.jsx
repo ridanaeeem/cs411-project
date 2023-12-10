@@ -38,9 +38,9 @@ export function Navbar() {
 	const location = useLocation();
 
 	if (user) {
-		console.log("current username is: " + user);
+		console.log("current username is: " + user.username);
 	} else {
-		console.log("current user is not logged in, email is: " + user);
+		console.log("current user is not logged in, see: " + user);
 	}
 
 	const logout = () => {
