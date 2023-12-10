@@ -40,6 +40,10 @@ const recipeSchema = mongoose.Schema({
 		type: String,
 		default: "",
 	},
+	username: {
+		type: String,
+		default: "",
+	}
 });
 
 const RecipeMessage = mongoose.model("RecipeMessage", recipeSchema);

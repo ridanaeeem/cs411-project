@@ -21,7 +21,7 @@ export const createRecipe = async (req, res) => {
 	// req.body is the data sent by client to API (recipe data from form)
 	const recipe = req.body;
 	// create new recipe with data from client
-	const newRecipe = new RecipeMessage(recipe);
+	const newRecipe = new RecipeMessage({ ...recipe, creator: req.userId, createdAt: new Date().toISOString() });
 
 	try {
 		// save new recipe to database

@@ -17,6 +17,9 @@ export function Form() {
 	// so we can dispatch the actions
 	const dispatch = useDispatch();
 
+	// user
+	const user = JSON.parse(localStorage.getItem("profile"));
+
 	// when the user clicks the submit button, validate the data before dispatching
 	function validate(recipeData) {
 		// go through each property in the recipeData object
@@ -44,7 +47,7 @@ export function Form() {
 		// dispatch action to create the recipe
 		console.log("Recipe Data:", recipeData);
 		if (validate(recipeData)) {
-			dispatch(createRecipe(recipeData));
+			dispatch(createRecipe({ ...recipeData, name: user?.result?.name }));
 		} else {
 			console.log("Error");
 		}

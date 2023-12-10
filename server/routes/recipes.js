@@ -3,9 +3,11 @@ import express from "express";
 // import { getRecipes, createRecipe, updateRecipe, deleteRecipe } from "../controllers/recipes.js";
 import { getRecipes, createRecipe } from "../controllers/recipes.js";
 
+import login from "../middleware/login.js";
+
 const router = express.Router();
 
-router.get("/", getRecipes);
-router.post("/", createRecipe);
+router.get("/", login, getRecipes);
+router.post("/", login, createRecipe);
 
 export default router;

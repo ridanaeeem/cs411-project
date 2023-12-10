@@ -5,12 +5,12 @@ const userSchema = mongoose.Schema({
 	username: {
 		type: String,
 		default: "",
-        required: true,
+		required: true,
 	},
 	email: {
 		type: String,
 		default: "",
-        required: true,
+		required: true,
 	},
 	id: {
 		type: String,
@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
 	},
 });
 
-const User = mongoose.model("User", recipeSchema);
+const User = mongoose.model("User", userSchema);
 
 // export mongoose model to perform CRUD operations on
 export default User;
