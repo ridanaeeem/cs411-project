@@ -15,6 +15,17 @@ export const getRecipes = () => async (dispatch) => {
 	}
 };
 
+export const userRecipes = () => async (dispatch) => {
+	try {
+		// the response from the database (the recipes) is stored in the data variable
+		const { data } = await api.fetchRecipes();
+		// dispatch the action from the backend data
+		dispatch({ type: "FETCH_SOME", payload: data });
+	} catch (error) {
+		console.log(error.message);
+	}
+};
+
 export const createRecipe = (recipe) => async (dispatch) => {
 	try {
 		// sends recipe, making a post api request to backend

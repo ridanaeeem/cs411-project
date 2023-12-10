@@ -33,6 +33,7 @@ const StyledTabs = styled.div`
 export function Navbar() {
 	// get user info from the credentials stored in profile in local storage
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+	const username = user.username;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -60,7 +61,7 @@ export function Navbar() {
 			<Logo />
 			<StyledTabs>
 				<StyledLink to={user ? "/recipes" : "/"}>Dashboard</StyledLink>
-				<StyledLink to={user ? "/:username" : "/"}>Cookbook</StyledLink>
+				<StyledLink to={user ? `/${username}` : "/"}>Cookbook</StyledLink>
 				<StyledLink to={"/"} onClick={logout}>
 					Sign Out
 				</StyledLink>

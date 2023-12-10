@@ -34,7 +34,6 @@ const App = () => {
 					path="/:username/:title"
 					element={<Recipe curRecipe={curRecipe} setCurRecipe={setCurRecipe} />}
 				/>
-				{/* <Route path="/:username/:title" element={<Recipe recipe={recipe} />} /> */}
 			</Routes>
 			<Footer />
 		</Router>
