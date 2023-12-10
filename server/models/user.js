@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema({
 	},
 });
 
-const Use = mongoose.model("Users", userSchema);
+const User = mongoose.model("Users", userSchema);
 
 // export mongoose model to perform CRUD operations on
 export default User;
