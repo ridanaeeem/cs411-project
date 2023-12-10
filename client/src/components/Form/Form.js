@@ -4,6 +4,10 @@ import { useDispatch } from "react-redux";
 import { createRecipe } from "../../actions/recipes";
 
 export function Form() {
+	// user info
+	const user = JSON.parse(localStorage.getItem("profile"));
+	const email = user?.email;
+
 	// set the initial state of the recipe data to be empty strings
 	const [recipeData, setRecipeData] = useState({
 		title: "",
@@ -11,7 +15,7 @@ export function Form() {
 		ingredients: "",
 		instructions: "",
 		tags: "",
-		recipePhoto: "",
+		creator: String(email),
 	});
 
 	// so we can dispatch the actions
@@ -44,7 +48,7 @@ export function Form() {
 		// dispatch action to create the recipe
 		console.log("Recipe Data:", recipeData);
 		if (validate(recipeData)) {
-			dispatch(createRecipe(recipeData));
+			dispatch(createRecipe({ ...recipeData }));
 		} else {
 			console.log("Error");
 		}
@@ -61,7 +65,7 @@ export function Form() {
 			ingredients: "",
 			instructions: "",
 			tags: "",
-			recipePhoto: "",
+			creator: String(email),
 		});
 	};
 
