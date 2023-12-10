@@ -24,3 +24,15 @@ export const createRecipe = (recipe) => async (dispatch) => {
 		console.log(error.message);
 	}
 };
+
+// works but not needed because i can just do it in Form.js
+// get recipe from url
+// export const getRecipeFromUrl = (recipeUrl) => async (dispatch) => {
+// 	try {
+// 		console.log("/actions/recipes getRecipeFromUrl");
+// 		const { data } = await api.fetchRecipeFromLink(recipeUrl);
+// 		console.log("data: ", data);
+// 	} catch (error) {
+// 		console.log(error.message);
+// 	}
+// };

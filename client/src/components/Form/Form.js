@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
-import { createRecipe } from "../../actions/recipes";
+import { createRecipe, getRecipeFromUrl } from "../../actions/recipes";
 
 export function Form() {
 	// user info
@@ -69,8 +69,30 @@ export function Form() {
 		});
 	};
 
+	// api - get recipe from url
+	const fetchRecipeFromUrl = async (recipe_url) => {
+		const base_url = "https://recipe-scrape.vercel.app/api/scrape?url=";
+		const recipeUrl = base_url + recipe_url;
+
+		const data = await fetch(recipeUrl).then((response) => response.json());
+		setRecipeData({
+			title: data.title,
+			description: data.description,
+			ingredients: data.ingredients,
+			instructions: data.instructions,
+			tags: "",
+			creator: String(email),
+		});
+	};
+
 	return (
 		<>
+			<button
+				onClick={() =>
+					fetchRecipeFromUrl("https://www.onceuponachef.com/recipes/roast-beef-tenderloin-wine-sauce.html")
+				}>
+				getch reipce
+			</button>
 			<form id="recipeForm" onSubmit={handleSubmit}>
 				<label>
 					Title
