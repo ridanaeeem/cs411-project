@@ -38,7 +38,7 @@ export function Navbar() {
 	const location = useLocation();
 
 	if (user) {
-		console.log("current user's email: " + user.decodedCredentialResponse.email);
+		console.log("current username is: " + user);
 	} else {
 		console.log("current user is not logged in, email is: " + user);
 	}
@@ -52,8 +52,6 @@ export function Navbar() {
 	// when location changes (redirects pages), update user
 	// this way you don't have to refresh for website to know you're logged in
 	useEffect(() => {
-		const email = user?.decodedCredentialResponse.email;
-		// const decodedCredentialResponse = user?.decodedCredentialResponse;
 		setUser(JSON.parse(localStorage.getItem("profile")));
 	}, [location]);
 

@@ -18,12 +18,13 @@ export function Login() {
 	// when a user signs in with google, a json web token is returned
 	// this token contains encrypted information about the user that needs to be decrypted using jwt-decode
 	const onSuccessRef = (credentialResponse) => {
-		console.log(credentialResponse);
 		const decodedCredentialResponse = jwtDecode(credentialResponse.credential);
-		console.log(decodedCredentialResponse);
+		const email = decodedCredentialResponse.email;
+		const atIndex = email.indexOf("@");
+		const username = email.slice(0, atIndex);
 		try {
-			// dispatch the decodedCredentialResponse to the redux store
-			dispatch({ type: "LOGIN", data: { decodedCredentialResponse } });
+			// dispatch the user info to the redux store
+			dispatch({ type: "LOGIN", data: { username } });
 			// redirect to dashboard after login
 			navigate("/recipes");
 		} catch (error) {

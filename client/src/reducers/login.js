@@ -2,7 +2,7 @@ const loginReducer = (state = { authData: null }, action) => {
 	switch (action.type) {
 		// save login data in local storage
 		case "LOGIN":
-			// semd all data to local storage
+			// send current user's username (email) to local storage
 			localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
 			return { ...state, authData: action?.data };
 		case "LOGOUT":

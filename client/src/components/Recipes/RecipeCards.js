@@ -8,7 +8,8 @@ export function RecipeCards({ setCurRecipe }) {
 	const recipes = useSelector((state) => state.recipes);
 
 	const recipeItems = recipes.map((recipe) => {
-		const username = recipe.creator;
+		const atIndex = recipe.creator.indexOf("@");
+		const username = recipe.creator.slice(0, atIndex);
 		const title = recipe.title.replace(/\s+/g, "-").toLowerCase();
 		return (
 			<Link key={recipe._id} to={`/${username}/${title}`} onClick={() => setCurRecipe(recipe)}>
