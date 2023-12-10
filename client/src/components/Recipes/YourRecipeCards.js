@@ -9,20 +9,20 @@ export function YourRecipeCards({ setCurRecipe }) {
 	const email = user?.email;
 	const recipes = useSelector((state) => state.recipes);
 
-	const recipeItems = recipes.map((recipe) => {
-		const atIndex = recipe.creator.indexOf("@");
-		const username = recipe.creator.slice(0, atIndex);
-		const title = recipe.title.replace(/\s+/g, "-").toLowerCase();
-		return recipe.creator === email ? (
-			<Link key={recipe._id} to={`/${username}/${title}`} onClick={() => setCurRecipe(recipe)}>
-				<RecipeCard recipe={recipe} />
-			</Link>
-		) : (
-			<></>
-		);
-	});
+	const recipeItems = recipes
+		.filter((recipe) => recipe.creator === email)
+		.map((recipe) => {
+			const atIndex = recipe.creator.indexOf("@");
+			const username = recipe.creator.slice(0, atIndex);
+			const title = recipe.title.replace(/\s+/g, "-").toLowerCase();
+			return (
+				<Link key={recipe._id} to={`/${username}/${title}`} onClick={() => setCurRecipe(recipe)}>
+					<RecipeCard recipe={recipe} />
+				</Link>
+			);
+		});
 
-	return !recipes.length ? (
+	return !recipes.filter((recipe) => recipe.creator === email).length ? (
 		<h1>No recipes yet!</h1>
 	) : (
 		<>

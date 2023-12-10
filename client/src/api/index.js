@@ -6,8 +6,5 @@ const url = "http://localhost:5000/recipes";
 // get data from mongodb to frontend
 export const fetchRecipes = () => axios.get(url);
 
-// get data from mongodb to frontend
-export const userRecipes = () => axios.get(url);
-
 // send data from frontend to mongodb
 export const createRecipe = (newRecipe) => axios.post(url, newRecipe);
