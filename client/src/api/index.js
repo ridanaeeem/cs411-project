@@ -7,7 +7,9 @@ const url = "http://localhost:5000/recipes";
 export const fetchRecipes = () => axios.get(url);
 
 // get data from mongodb to frontend
-export const userRecipes = () => axios.get(url);
+const user = JSON.parse(localStorage.getItem("profile"));
+const username = user?.username;
+export const fetchUserRecipes = () => axios.get(`/user?user=${username}`);
 
 // send data from frontend to mongodb
 export const createRecipe = (newRecipe) => axios.post(url, newRecipe);

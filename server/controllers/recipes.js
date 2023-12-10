@@ -15,6 +15,21 @@ export const getRecipes = async (req, res) => {
 	}
 };
 
+// getting a user's post
+// asynchronous function because we are fetching data from the database
+export const getUserRecipes = async (req, res) => {
+	try {
+		console.log("Incoming Request Query:", req.query);
+		const userEmail = req.query.email; // assuming the email is sent as a query parameter
+		const recipeMessages = await RecipeMessage.find({ creator: userEmail });
+		console.log("User's recipes:", recipeMessages);
+		// send the recipes as a response
+		res.status(200).json(recipeMessages);
+	} catch (error) {
+		res.status(404).json({ message: error.message });
+	}
+};
+
 // creating a post
 // asynchronous function because we are saving data to the database
 export const createRecipe = async (req, res) => {

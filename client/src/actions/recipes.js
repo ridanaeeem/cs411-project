@@ -15,12 +15,13 @@ export const getRecipes = () => async (dispatch) => {
 	}
 };
 
-export const userRecipes = () => async (dispatch) => {
+// get recipes for a specific user
+export const getUserRecipes = (email) => async (dispatch) => {
 	try {
 		// the response from the database (the recipes) is stored in the data variable
-		const { data } = await api.fetchRecipes();
+		const { data } = await api.fetchUserRecipes(email);
 		// dispatch the action from the backend data
-		dispatch({ type: "FETCH_SOME", payload: data });
+		dispatch({ type: "FETCH_USER_RECIPES", payload: data });
 	} catch (error) {
 		console.log(error.message);
 	}
