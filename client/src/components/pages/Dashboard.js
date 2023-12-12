@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
 import { FullPage } from "./Home";
 
+const AllCards = styled.div``;
+
 export function Dashboard({ curRecipe, setCurRecipe }) {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
@@ -16,9 +18,10 @@ export function Dashboard({ curRecipe, setCurRecipe }) {
 
 	return (
 		<FullPage>
-			<h1>Main Dash</h1>
-			<div>
+			<AllCards>
 				<RecipeCards curRecipe={curRecipe} setCurRecipe={setCurRecipe} />
+			</AllCards>
+			<div>
 				<Form />
 			</div>
 		</FullPage>

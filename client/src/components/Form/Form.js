@@ -79,6 +79,11 @@ export function Form() {
 		const apiCall = base_url + recipe_url;
 
 		const data = await fetch(apiCall).then((response) => response.json());
+		if (!data.title) {
+			console.log("error!");
+			return;
+		}
+
 		const unprocessedInstructions = data.instructions;
 		const processedInstructions = unprocessedInstructions.split("\n");
 		setRecipeData({
@@ -98,7 +103,7 @@ export function Form() {
 		<>
 			<button
 				onClick={() =>
-					fetchRecipeFromUrl("https://www.allrecipes.com/recipe/276505/grandmas-hash-brown-casserole/")
+					fetchRecipeFromUrl("https://www.chelseasmessyapron.com/one-pan-healthy-sausage-and-veggies/")
 				}>
 				getch reipce
 			</button>

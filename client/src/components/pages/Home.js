@@ -9,6 +9,7 @@ import pot from "../../images/pot.svg";
 export const FullPage = styled.div`
 	background-color: #ffebd3;
 	height: 100%;
+	width: 100%;
 `;
 
 const Container = styled.div`

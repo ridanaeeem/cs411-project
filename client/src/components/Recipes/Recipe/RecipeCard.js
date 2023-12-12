@@ -3,24 +3,28 @@ import styled from "styled-components";
 import default1 from "../../../images/default1.svg";
 
 const CardArea = styled.div`
-	border: 1px solid black;
-	margin: 10px;
-	padding: 10px;
+	border: 10px solid #ffebd3;
+	margin: 5%;
+	padding: 5%;
 	background-color: white;
+	width: 100%;
 `;
 
 export function RecipeCard({ recipe }) {
 	// only want to display some of the description on the recipe cards
 	let shortDescription = recipe.description;
-	if (shortDescription.length > 10) {
-		shortDescription = recipe.description.substring(0, 10) + "...";
+	if (shortDescription.length > 100) {
+		shortDescription = recipe.description.substring(0, 100) + "...";
 	}
 
 	return (
 		<CardArea>
-			{recipe.image ? <img src={recipe.image} alt={recipe.title} /> : <img src={default1} alt="default" />}
+			{recipe.image ? (
+				<img src={recipe.image} alt={recipe.title} width="100%" />
+			) : (
+				<img src={default1} alt="default" width="100%" />
+			)}
 			<h1>{recipe.title}</h1>
-			<p>{recipe.creator}</p>
 			<p>{shortDescription}</p>
 		</CardArea>
 	);

@@ -38,11 +38,12 @@ export function Navbar() {
 	const navigate = useNavigate();
 	const location = useLocation();
 
-	if (user) {
-		console.log("current username is: " + user.username);
-	} else {
-		console.log("current user is not logged in, see: " + user);
-	}
+	// for testing purposes
+	// if (user) {
+	// 	console.log("current username is: " + user.username);
+	// } else {
+	// 	console.log("current user is not logged in, see: " + user);
+	// }
 
 	const logout = () => {
 		dispatch({ type: "LOGOUT" });
