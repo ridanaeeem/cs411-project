@@ -16,6 +16,7 @@ export function Form() {
 		instructions: "",
 		tags: "",
 		creator: String(email),
+		url: "",
 	});
 
 	// so we can dispatch the actions
@@ -66,30 +67,35 @@ export function Form() {
 			instructions: "",
 			tags: "",
 			creator: String(email),
+			url: "",
 		});
 	};
 
 	// api - get recipe from url
 	const fetchRecipeFromUrl = async (recipe_url) => {
 		const base_url = "https://recipe-scrape.vercel.app/api/scrape?url=";
-		const recipeUrl = base_url + recipe_url;
+		const apiCall = base_url + recipe_url;
 
-		const data = await fetch(recipeUrl).then((response) => response.json());
+		const data = await fetch(apiCall).then((response) => response.json());
+		const unprocessedInstructions = data.instructions;
+		const processedInstructions = unprocessedInstructions.split("\n");
 		setRecipeData({
 			title: data.title,
 			description: data.description,
 			ingredients: data.ingredients,
-			instructions: data.instructions,
+			instructions: processedInstructions,
 			tags: "",
 			creator: String(email),
+			url: recipe_url,
 		});
+		console.log(recipeData);
 	};
 
 	return (
 		<>
 			<button
 				onClick={() =>
-					fetchRecipeFromUrl("https://www.onceuponachef.com/recipes/roast-beef-tenderloin-wine-sauce.html")
+					fetchRecipeFromUrl("https://www.allrecipes.com/recipe/276505/grandmas-hash-brown-casserole/")
 				}>
 				getch reipce
 			</button>
@@ -142,7 +148,7 @@ export function Form() {
 						value={recipeData.instructions}
 						onChange={(e) => setRecipeData({ ...recipeData, instructions: e.target.value })}
 						required
-						maxLength="200"
+						maxLength="1000"
 						form="recipeForm"
 					/>
 				</label>
