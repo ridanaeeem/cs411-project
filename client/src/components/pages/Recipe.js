@@ -12,6 +12,14 @@ export function Recipe({ curRecipe }) {
 		dispatch(getRecipes());
 	}, [dispatch]);
 
+	const curIngredientsList = curRecipe.ingredients.map((ingredients) => {
+		return <li key={ingredients}>{ingredients}</li>;
+	});
+
+	const curInstructionsList = curRecipe.instructions.map((instructions) => {
+		return <li key={instructions}>{instructions}</li>;
+	});
+
 	console.log(curRecipe);
 	return (
 		<>
@@ -21,13 +29,12 @@ export function Recipe({ curRecipe }) {
 				<img src={default1} alt="default" />
 			)}
 			<h1>{curRecipe.title}</h1>
-			<h1>{curRecipe.creator}</h1>
-			<h1>{curRecipe.likes}</h1>
-			<h1>{curRecipe.postDate.substring(0, 10)}</h1>
-			<h1>{curRecipe.description}</h1>
-			<h1>{curRecipe.ingredients}</h1>
-			<h1>{curRecipe.instructions}</h1>
-			<div></div>
+			<div>Posted {curRecipe.postDate.substring(0, 10)}</div>
+			<div>{curRecipe.description}</div>
+			<h1>Ingredients: </h1>
+			<ul>{curIngredientsList}</ul>
+			<h1>Instructions: </h1>
+			<ol>{curInstructionsList}</ol>
 		</>
 	);
 }

@@ -166,9 +166,9 @@ export function Form() {
 			processedCategory = data.category.split(",");
 		}
 		var processedYield = data.yields;
-		const index = processedYield.indexOf(" ");
-		if (index) {
-			processedYield = Number(processedYield.substring(0, index));
+		const spaceIndex = processedYield.indexOf(" ");
+		if (spaceIndex) {
+			processedYield = Number(processedYield.substring(0, spaceIndex));
 		}
 		setRecipeData({
 			title: data.title,
