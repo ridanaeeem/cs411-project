@@ -8,6 +8,7 @@ const CardArea = styled.div`
 	padding: 5%;
 	background-color: white;
 	width: 100%;
+	height: 100%;
 `;
 
 export function RecipeCard({ recipe }) {

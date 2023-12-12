@@ -231,8 +231,8 @@ export function Form() {
 					/>
 				</label>
 				<br></br>
-				{/* photo upload currently does not work - table this functionality for now  */}
-				{/* <label">Photo Upload
+				{/* photo upload currently does not work - table this functionality for now
+				<label>Photo Upload
 				<br></br>
 				<div>
 					<FileBase

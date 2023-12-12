@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 
 const CardMap = styled.div`
 	display: flex;
-	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: stretch;
 `;
 
 const StyledLink = styled(Link)`
-	width: 30%;
+	width: 20%;
 	text-decoration: none;
 	color: black;
-	// align-self: stretch;
 `;
 
 export function RecipeCards({ setCurRecipe }) {
