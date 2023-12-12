@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
 import { createRecipe, getRecipeFromUrl } from "../../actions/recipes";
+import axios from "axios";
 
 export function Form() {
 	// user info
@@ -76,11 +77,32 @@ export function Form() {
 	// api - get recipe from url
 	const fetchRecipeFromUrl = async (recipe_url) => {
 		const base_url = "https://recipe-scrape.vercel.app/api/scrape?url=";
-		const apiCall = base_url + recipe_url;
+		const scraperCall = base_url + recipe_url;
 
-		const data = await fetch(apiCall).then((response) => response.json());
+		const data = await fetch(scraperCall).then((response) => response.json());
+		// if the first api doesnt work, try second one
 		if (!data.title) {
-			console.log("error!");
+			console.log("first api did not work! trying second one");
+
+			const options = {
+				method: "GET",
+				url: "https://cookr-recipe-parser.p.rapidapi.com/getRecipe",
+				params: {
+					source: "https://www.chelseasmessyapron.com/one-pan-healthy-sausage-and-veggies/",
+				},
+				headers: {
+					"X-RapidAPI-Key": process.env.REACT_APP_COOKR_KEY,
+					"X-RapidAPI-Host": "cookr-recipe-parser.p.rapidapi.com",
+				},
+			};
+
+			try {
+				const response = await axios.request(options);
+				console.log(response.data);
+			} catch (error) {
+				console.error(error);
+			}
+
 			return;
 		}
 
