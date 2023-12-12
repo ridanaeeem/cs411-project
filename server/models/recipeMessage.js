@@ -44,6 +44,10 @@ const recipeSchema = mongoose.Schema({
 		type: String,
 		default: "",
 	},
+	image: {
+		type: String,
+		default: ""
+	}
 });
 
 const RecipeMessage = mongoose.model("RecipeMessage", recipeSchema);

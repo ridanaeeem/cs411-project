@@ -17,6 +17,7 @@ export function Form() {
 		tags: "",
 		creator: String(email),
 		url: "",
+		image: "",
 	});
 
 	// so we can dispatch the actions
@@ -68,6 +69,7 @@ export function Form() {
 			tags: "",
 			creator: String(email),
 			url: "",
+			image: "",
 		});
 	};
 
@@ -87,6 +89,7 @@ export function Form() {
 			tags: "",
 			creator: String(email),
 			url: recipe_url,
+			image: data.image ? data.image : null,
 		});
 		console.log(recipeData);
 	};
