@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import FileBase from "react-file-base64";
 import { useDispatch } from "react-redux";
-import { createRecipe, getRecipeFromUrl } from "../../actions/recipes";
+import { createRecipe } from "../../actions/recipes";
 import axios from "axios";
+import default2 from "../../images/default2.svg";
 
 export function Form() {
 	// user info
 	const user = JSON.parse(localStorage.getItem("profile"));
 	const email = user?.email;
 
-	// set the initial state of the recipe data to be empty strings
+	// set the initial state of the recipe data to be empty strings and the current user's email
 	const [recipeData, setRecipeData] = useState({
 		title: "",
 		description: "",
@@ -74,21 +75,24 @@ export function Form() {
 		});
 	};
 
+	// url stuff
+	const [urlInput, setUrlInput] = useState("");
+
 	// api - get recipe from url
 	const fetchRecipeFromUrl = async (recipe_url) => {
 		const base_url = "https://recipe-scrape.vercel.app/api/scrape?url=";
 		const scraperCall = base_url + recipe_url;
 
 		const data = await fetch(scraperCall).then((response) => response.json());
+
 		// if the first api doesnt work, try second one
 		if (!data.title) {
 			console.log("first api did not work! trying second one");
-
 			const options = {
 				method: "GET",
 				url: "https://cookr-recipe-parser.p.rapidapi.com/getRecipe",
 				params: {
-					source: "https://www.chelseasmessyapron.com/one-pan-healthy-sausage-and-veggies/",
+					source: recipe_url,
 				},
 				headers: {
 					"X-RapidAPI-Key": process.env.REACT_APP_COOKR_KEY,
@@ -98,14 +102,40 @@ export function Form() {
 
 			try {
 				const response = await axios.request(options);
-				console.log(response.data);
+				const cookrData = response.data.recipe;
+				console.log(cookrData);
+				// cleaning up instructions
+				const unprocessedCookrInstructions = cookrData.recipeInstructions;
+				var processedCookrInstructions = [];
+				for (let x in unprocessedCookrInstructions) {
+					processedCookrInstructions.push(unprocessedCookrInstructions[x].text);
+				}
+				// cleaning up tags
+				const unprocessedCookrTags = cookrData.recipeTags;
+				var processedCookrTags = [];
+				for (let x in unprocessedCookrTags) {
+					processedCookrTags.push(unprocessedCookrTags[x].name);
+				}
+				console.log(processedCookrTags);
+				setRecipeData({
+					title: cookrData.name,
+					description: cookrData.description,
+					ingredients: cookrData.recipeIngredients,
+					instructions: processedCookrInstructions,
+					tags: processedCookrTags,
+					creator: String(email),
+					url: recipe_url,
+					image: cookrData.image ? cookrData.image : default2,
+				});
+				console.log("via cookr: ", recipeData);
 			} catch (error) {
 				console.error(error);
+				console.log("second api did not work either!");
 			}
-
 			return;
 		}
 
+		// if the first api works, fill out the form accordingly
 		const unprocessedInstructions = data.instructions;
 		const processedInstructions = unprocessedInstructions.split("\n");
 		setRecipeData({
@@ -116,19 +146,26 @@ export function Form() {
 			tags: "",
 			creator: String(email),
 			url: recipe_url,
-			image: data.image ? data.image : null,
+			image: data.image ? data.image : default2,
 		});
-		console.log(recipeData);
+		console.log("via api 1: ", recipeData);
 	};
 
 	return (
 		<>
-			<button
-				onClick={() =>
-					fetchRecipeFromUrl("https://www.chelseasmessyapron.com/one-pan-healthy-sausage-and-veggies/")
-				}>
-				getch reipce
-			</button>
+			<form id="urlForm">
+				<input
+					id="urlInput"
+					type="text"
+					value={urlInput}
+					onChange={(e) => setUrlInput(e.target.value)}
+					placeholder="Enter URL"></input>
+				<br></br>
+				<button type="button" onClick={() => fetchRecipeFromUrl(urlInput)}>
+					Submit URL
+				</button>
+			</form>
+
 			<form id="recipeForm" onSubmit={handleSubmit}>
 				<label>
 					Title
