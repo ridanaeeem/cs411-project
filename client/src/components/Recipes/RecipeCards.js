@@ -12,9 +12,10 @@ const CardMap = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-	width: 20%;
+	width: 25%;
 	text-decoration: none;
 	color: black;
+	padding: 1rem;
 `;
 
 export function RecipeCards({ setCurRecipe }) {

@@ -3,9 +3,9 @@ import styled from "styled-components";
 import default1 from "../../../images/default1.svg";
 
 const CardArea = styled.div`
-	border: 10px solid #ffebd3;
-	margin: 5%;
-	padding: 5%;
+	border: 1px solid white;
+	margin-right: 15%;
+	padding: 10%;
 	background-color: white;
 	width: 100%;
 	height: 100%;

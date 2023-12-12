@@ -20,6 +20,12 @@ export function Form() {
 		creator: String(email),
 		url: "",
 		image: "",
+		prepTime: 0,
+		cookTime: 0,
+		totalTime: 0,
+		yield: 0,
+		cuisine: "",
+		category: "",
 	});
 
 	// so we can dispatch the actions
@@ -32,10 +38,10 @@ export function Form() {
 			// maxLength and required is covered by the HTML input fields
 			// check for special characters next
 			if (Object.prototype.hasOwnProperty.call(recipeData, prop)) {
-				if (recipeData[prop].includes("<") || recipeData[prop].includes(">")) {
+				if (String(recipeData[prop]).includes("<") || String(recipeData[prop]).includes(">")) {
 					alert(`Please enter a valid ${prop}, special characters (<, >, {, }) not allowed`);
 					return false;
-				} else if (recipeData[prop].includes("{") || recipeData[prop].includes("}")) {
+				} else if (String(recipeData[prop]).includes("{") || String(recipeData[prop]).includes("}")) {
 					alert(`Please enter a valid ${prop}, special characters (<, >, {, }) not allowed`);
 					return false;
 				}
@@ -72,6 +78,12 @@ export function Form() {
 			creator: String(email),
 			url: "",
 			image: "",
+			prepTime: 0,
+			cookTime: 0,
+			totalTime: 0,
+			yield: 0,
+			cuisine: "",
+			category: "",
 		});
 	};
 
@@ -84,10 +96,12 @@ export function Form() {
 		const scraperCall = base_url + recipe_url;
 
 		const data = await fetch(scraperCall).then((response) => response.json());
+		console.log("first api", data);
 
 		// if the first api doesnt work, try second one
 		if (!data.title) {
 			console.log("first api did not work! trying second one");
+
 			const options = {
 				method: "GET",
 				url: "https://cookr-recipe-parser.p.rapidapi.com/getRecipe",
@@ -126,6 +140,12 @@ export function Form() {
 					creator: String(email),
 					url: recipe_url,
 					image: cookrData.image ? cookrData.image : default2,
+					prepTime: cookrData.prepTime,
+					cookTime: cookrData.cookTime,
+					totalTime: cookrData.totalTime,
+					yield: cookrData.recipeYield,
+					cuisine: cookrData.recipeCuisine,
+					category: cookrData.recipeCategory,
 				});
 				console.log("via cookr: ", recipeData);
 			} catch (error) {
@@ -136,17 +156,35 @@ export function Form() {
 		}
 
 		// if the first api works, fill out the form accordingly
-		const unprocessedInstructions = data.instructions;
-		const processedInstructions = unprocessedInstructions.split("\n");
+		// clean up the data first
+		var processedCuisine = "";
+		if (data.cuisine) {
+			processedCuisine = data.cuisine.split(",");
+		}
+		var processedCategory = "";
+		if (data.category) {
+			processedCategory = data.category.split(",");
+		}
+		var processedYield = data.yields;
+		const index = processedYield.indexOf(" ");
+		if (index) {
+			processedYield = Number(processedYield.substring(0, index));
+		}
 		setRecipeData({
 			title: data.title,
 			description: data.description,
 			ingredients: data.ingredients,
-			instructions: processedInstructions,
+			instructions: data.instructions_list,
 			tags: "",
 			creator: String(email),
 			url: recipe_url,
 			image: data.image ? data.image : default2,
+			prepTime: data.prep_time,
+			cookTime: data.cook_time,
+			totalTime: data.total_time,
+			yield: processedYield,
+			cuisine: processedCuisine,
+			category: processedCategory,
 		});
 		console.log("via api 1: ", recipeData);
 	};

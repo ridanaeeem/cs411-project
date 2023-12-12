@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 // create schema
-// default number of likes is zero
 // default date is current date
 const recipeSchema = mongoose.Schema({
 	title: {
@@ -46,8 +45,31 @@ const recipeSchema = mongoose.Schema({
 	},
 	image: {
 		type: String,
-		default: ""
-	}
+		default: "",
+	},
+	cookTime: {
+		type: Number,
+	},
+	prepTime: {
+		type: Number,
+		default: 0,
+	},
+	totalTime: {
+		type: Number,
+		default: 0,
+	},
+	yield: {
+		type: Number,
+		default: 0,
+	},
+	cuisine: {
+		type: [String],
+		default: undefined,
+	},
+	category: {
+		type: [String],
+		default: undefined,
+	},
 });
 
 const RecipeMessage = mongoose.model("RecipeMessage", recipeSchema);
