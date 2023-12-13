@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";

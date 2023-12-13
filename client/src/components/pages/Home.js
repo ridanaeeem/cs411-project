@@ -55,7 +55,7 @@ const Right = styled.div`
 
 const Subtitle = styled.div`
 	font-size: 3rem;
-	padding: 10px;
+	padding: 5rem 0 2rem 0;
 	color: black;
 	width: 100%;
 	text-align: center;
@@ -63,7 +63,7 @@ const Subtitle = styled.div`
 
 const SubText = styled.div`
 	font-size: 1.5rem;
-	padding: 1rem 10rem;
+	padding: 0rem 10rem 5rem 10rem;
 	color: black;
 	width: 100%;
 	text-align: center;
@@ -81,7 +81,7 @@ const LoginDiv = styled.div`
 	padding-top: 1rem;
 `;
 
-export function Home() {
+export function Home({ user }) {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
 
@@ -115,7 +115,7 @@ export function Home() {
 				savor the joy of cooking without boundaries.
 				<br></br>
 				<br></br>
-				<StyledLink to={"/about"}>Learn more about us here</StyledLink>
+				<StyledLink to={user ? "/about" : "/"}>Learn more about us here.</StyledLink>
 			</SubText>
 		</FullPage>
 	);

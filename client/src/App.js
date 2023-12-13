@@ -31,7 +31,7 @@ const App = () => {
 			<Navbar user={user} setUser={setUser} />
 			<AccountForBar />
 			<Routes>
-				<Route path="/" Component={Home} />
+				<Route path="/" element={<Home user={user} />} />
 				<Route path="/recipes" element={<Dashboard curRecipe={curRecipe} setCurRecipe={setCurRecipe} />} />
 				<Route path="/about" Component={About} />
 				<Route path="/credits" Component={Credits} />
