@@ -30,6 +30,7 @@ export function Recipe({ curRecipe }) {
 			)}
 			<h1>{curRecipe.title}</h1>
 			<div>Posted {curRecipe.postDate.substring(0, 10)}</div>
+			{curRecipe.url ? <a href={curRecipe.url}>Original source here</a> : null}
 			<div>{curRecipe.description}</div>
 			<h1>Ingredients: </h1>
 			<ul>{curIngredientsList}</ul>
