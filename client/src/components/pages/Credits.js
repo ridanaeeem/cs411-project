@@ -44,6 +44,14 @@ export function Credits() {
 				<StyledLink href="https://recipe-scrape.vercel.app/api/scrape?url=">here</StyledLink>) and{" "}
 				<StyledLink href="https://rapidapi.com/dashdash/api/cookr-recipe-parser">Cookr</StyledLink>.<br></br>
 				<br></br>
+				The{" "}
+				<StyledLink href="https://rapidapi.com/spoonacular/api/recipe-food-nutrition/">
+					Spoonacular API
+				</StyledLink>{" "}
+				was also used in order to calculate conversion rates, but due to rate limits has not yet been fully
+				implemented.
+				<br></br>
+				<br></br>
 				All graphics were generated on <StyledLink href="https://figma.com">Figma</StyledLink>.
 			</SubText>
 		</FullPage>

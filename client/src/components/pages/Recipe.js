@@ -34,6 +34,8 @@ async function parse(unprocessedIngredients, servings) {
 }
 
 async function conversion(parsedIngredients) {
+	let totalConversion = [];
+
 	for (let i = 0; i < parsedIngredients.length; i++) {
 		const gram = parsedIngredients[i].possibleUnits.indexOf("g");
 		const cup = parsedIngredients[i].possibleUnits.indexOf("cup");
@@ -56,11 +58,14 @@ async function conversion(parsedIngredients) {
 
 		try {
 			const response = await axios.request(options);
-			return response.data;
+			console.log(response.data);
+			totalConversion.push(response.data);
 		} catch (error) {
 			console.error(error);
 		}
 	}
+
+	return totalConversion;
 }
 
 async function convert(curRecipe) {
@@ -68,6 +73,7 @@ async function convert(curRecipe) {
 	console.log(parsedIngredients);
 	const convertedIngredients = await conversion(parsedIngredients);
 	console.log(convertedIngredients);
+	return convertedIngredients;
 }
 
 export function Recipe({ curRecipe }) {
@@ -86,6 +92,21 @@ export function Recipe({ curRecipe }) {
 		return <li key={instructions}>{instructions}</li>;
 	});
 
+	// const allItems = "";
+
+	// async function handler() {
+	// 	var newUnits = convert(curRecipe);
+	// 	var newList = [];
+	// 	for (let i = 0; i < newUnits.length; i++) {
+	// 		console.log(newUnits[i].answer);
+	// 		newList.push(newUnits[i].answer);
+	// 	}
+	// 	var allItems = newList.map((answer) => {
+	// 		return <li key={answer}>{answer}</li>;
+	// 	});
+	// 	return allItems;
+	// }
+
 	return (
 		<>
 			{curRecipe.image ? (
@@ -100,6 +121,7 @@ export function Recipe({ curRecipe }) {
 			<h1>Ingredients: </h1>
 			<ul>{curIngredientsList}</ul>
 			<button onClick={(e) => convert(curRecipe)}>Convert to Grams</button>
+			{/* <div>allItems ? {allItems} : null</div>  */}
 			<h1>Instructions: </h1>
 			<ol>{curInstructionsList}</ol>
 		</>

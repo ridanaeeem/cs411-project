@@ -11,6 +11,10 @@ const CardArea = styled.div`
 	height: 100%;
 `;
 
+const Title = styled.div`
+	font-size: calc(1rem + 10px);
+`;
+
 export function RecipeCard({ recipe }) {
 	// only want to display some of the description on the recipe cards
 	let shortDescription = recipe.description;
@@ -25,7 +29,7 @@ export function RecipeCard({ recipe }) {
 			) : (
 				<img src={default1} alt="default" width="100%" />
 			)}
-			<h1>{recipe.title}</h1>
+			<Title>{recipe.title}</Title>
 			<p>{shortDescription}</p>
 		</CardArea>
 	);

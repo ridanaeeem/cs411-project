@@ -19,6 +19,10 @@ export const Tagline = styled.h3`
 	font-weight: 100;
 `;
 
+export const FormDiv = styled.div`
+	padding-top: 2rem;
+`;
+
 export function Dashboard({ curRecipe, setCurRecipe }) {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
@@ -33,7 +37,9 @@ export function Dashboard({ curRecipe, setCurRecipe }) {
 				<Tagline>
 					Welcome to the Dashboard! Here you can find all the recipes that have been submitted and submit your
 					very own to share with others! Get started below!
-					<Form />
+					<FormDiv>
+						<Form />
+					</FormDiv>
 				</Tagline>
 			</Subheading>
 			<AllCards>

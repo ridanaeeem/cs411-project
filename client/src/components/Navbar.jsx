@@ -18,7 +18,7 @@ const StyledNav = styled.nav`
 const StyledLink = styled(Link)`
 	padding: 10px;
 	text-decoration: none;
-	font-size: 3rem;
+	font-size: calc(3rem + 1px);
 	color: black;
 	margin: 0 0.25rem;
 `;
@@ -63,7 +63,7 @@ export function Navbar({ user, setUser }) {
 				<StyledLink to={user ? "/recipes" : "/"}>Dashboard</StyledLink>
 				<StyledLink to={username !== null ? `/${username}` : "/"}>Cookbook</StyledLink>
 				<StyledLink to={"/"} onClick={logout}>
-					Sign Out
+					SignOut
 				</StyledLink>
 			</StyledTabs>
 		</StyledNav>
