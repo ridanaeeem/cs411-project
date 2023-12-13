@@ -23,7 +23,7 @@ export function Form() {
 		prepTime: 0,
 		cookTime: 0,
 		totalTime: 0,
-		yield: 0,
+		yield: 1,
 		cuisine: "",
 		category: "",
 	});
@@ -81,7 +81,7 @@ export function Form() {
 			prepTime: 0,
 			cookTime: 0,
 			totalTime: 0,
-			yield: 0,
+			yield: 1,
 			cuisine: "",
 			category: "",
 		});

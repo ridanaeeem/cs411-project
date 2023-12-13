@@ -60,7 +60,7 @@ const recipeSchema = mongoose.Schema({
 	},
 	yield: {
 		type: Number,
-		default: 0,
+		default: 1,
 	},
 	cuisine: {
 		type: [String],
