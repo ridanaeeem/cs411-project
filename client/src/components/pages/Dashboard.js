@@ -8,12 +8,12 @@ import { FullPage } from "./Home";
 
 const AllCards = styled.div``;
 
-const Subheading = styled.div`
+export const Subheading = styled.div`
 	background-color: #89af6c;
 	width: 100%;
 `;
 
-const Tagline = styled.h3`
+export const Tagline = styled.h3`
 	padding: 2rem;
 	text-align: center;
 	font-weight: 100;

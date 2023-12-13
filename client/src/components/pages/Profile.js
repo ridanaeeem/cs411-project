@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import YourRecipeCards from "../Recipes/YourRecipeCards";
 import { useDispatch } from "react-redux";
 import { getRecipes } from "../../actions/recipes";
-import { Login } from "../Login";
+import { FullPage } from "./Home";
+import { Subheading } from "./Dashboard";
+import { Tagline } from "./Dashboard";
 
 export function Profile() {
 	// dispatch an action to the redux store
@@ -16,10 +18,12 @@ export function Profile() {
 	const email = user?.email;
 
 	return (
-		<>
-			<h1>welcome to your online cookbook {user?.username}!</h1>
+		<FullPage>
+			<Subheading>
+				<Tagline>Welcome to your online cookbook!</Tagline>
+			</Subheading>
 			<YourRecipeCards></YourRecipeCards>
 			<div></div>
-		</>
+		</FullPage>
 	);
 }

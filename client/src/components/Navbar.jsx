@@ -30,9 +30,8 @@ const StyledTabs = styled.div`
 	width: 50%;
 `;
 
-export function Navbar() {
+export function Navbar({ user, setUser }) {
 	// get user info from the credentials stored in profile in local storage
-	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 	const username = user ? user.username : null;
 	const dispatch = useDispatch();
 	const navigate = useNavigate();

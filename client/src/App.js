@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import { Home } from "./components/pages/Home";
 import { Dashboard } from "./components/pages/Dashboard";
 import { About } from "./components/pages/About";
+import { Credits } from "./components/pages/Credits";
 import { Profile } from "./components/pages/Profile";
 import { Recipe } from "./components/pages/Recipe";
 import { Navbar } from "./components/Navbar";
@@ -19,23 +20,28 @@ export const AccountForBar = styled.div`
 `;
 
 const App = () => {
+	// when location changes (redirects pages), update user
+	// this way you don't have to refresh for website to know you're logged in
+	const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+
 	const [curRecipe, setCurRecipe] = useState(undefined);
 
 	return (
 		<Router>
-			<Navbar />
+			<Navbar user={user} setUser={setUser} />
 			<AccountForBar />
 			<Routes>
 				<Route path="/" Component={Home} />
 				<Route path="/recipes" element={<Dashboard curRecipe={curRecipe} setCurRecipe={setCurRecipe} />} />
 				<Route path="/about" Component={About} />
+				<Route path="/credits" Component={Credits} />
 				<Route path="/:username" Component={Profile} />
 				<Route
 					path="/:username/:title"
 					element={<Recipe curRecipe={curRecipe} setCurRecipe={setCurRecipe} />}
 				/>
 			</Routes>
-			<Footer />
+			<Footer user={user} />
 		</Router>
 	);
 };

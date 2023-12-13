@@ -10,7 +10,7 @@ const Background = styled.img`
 	height: 100%;
 `;
 
-export function About() {
+export function Credits() {
 	// dispatch an action (getRecipes) to the redux store
 	const dispatch = useDispatch();
 
@@ -21,7 +21,7 @@ export function About() {
 	return (
 		<FullPage>
 			<Background src={default2} alt="banner" />
-			<h1>about page</h1>
+			<h1>credits page</h1>
 			<div></div>
 		</FullPage>
 	);

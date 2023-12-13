@@ -4,14 +4,14 @@ import { useSelector } from "react-redux"; //allows us to fetch data from global
 import RecipeCard from "./Recipe/RecipeCard";
 import { Link } from "react-router-dom";
 
-const CardMap = styled.div`
+export const CardMap = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 	align-items: stretch;
 `;
 
-const StyledLink = styled(Link)`
+export const StyledLink = styled(Link)`
 	width: 25%;
 	text-decoration: none;
 	color: black;

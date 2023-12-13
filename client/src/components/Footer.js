@@ -11,10 +11,13 @@ const StyledFooter = styled.footer`
 	text-align: center;
 `;
 
-export function Footer() {
+const StyledLink = styled(Link)``;
+
+export function Footer({ user }) {
 	return (
 		<StyledFooter>
-			<p>Credits</p>
+			<StyledLink to={user ? "/credits" : "/"}>Credits</StyledLink>
+			<StyledLink to={user ? "/about" : "/"}>About</StyledLink>
 		</StyledFooter>
 	);
 }
