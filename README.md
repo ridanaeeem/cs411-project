@@ -7,8 +7,7 @@ Cooking should be an accessible and enjoyable experience for all, and so here is
 -   Users can edit existing recipes after pasting the links, altering certain attributes
 -   Recipe ingredients can all be converted to grams with the click of a button
 
-![homepage of Easier Recipe](https://imgur.com/UZyEUdg)
-![personal cookbook](https://imgur.com/undefined)
+<blockquote class="imgur-embed-pub" lang="en" data-id="UZyEUdg"><a href="https://imgur.com/UZyEUdg">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 Current features I am working on implementing:
 
