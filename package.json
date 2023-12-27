@@ -1,0 +1,26 @@
+{
+  "name": "cs411-project",
+  "version": "1.0.0",
+  "description": "Easier Recipe is a platform made for recipe storage and sharing!",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "jwt-decode": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridanaeeem/easier-recipe.git"
+  },
+  "author": "ridanaeeem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridanaeeem/easier-recipe/issues"
+  },
+  "homepage": "https://github.com/ridanaeeem/easier-recipe#readme"
+}
