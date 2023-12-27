@@ -130,6 +130,9 @@ export function Form() {
 				for (let x in unprocessedCookrTags) {
 					processedCookrTags.push(unprocessedCookrTags[x].name);
 				}
+				// cleaning up times
+				const processedPrep = Number(cookrData.prepTime.split(" ")[0]);
+				const processedCook = Number(cookrData.prepTime.split(" ")[0]);
 				console.log(processedCookrTags);
 				setRecipeData({
 					title: cookrData.name,
@@ -140,9 +143,9 @@ export function Form() {
 					creator: String(email),
 					url: recipe_url,
 					image: cookrData.image ? cookrData.image : default2,
-					prepTime: cookrData.prepTime,
-					cookTime: cookrData.cookTime,
-					totalTime: cookrData.totalTime,
+					prepTime: processedPrep,
+					cookTime: processedCook,
+					totalTime: processedPrep + processedCook,
 					yield: cookrData.recipeYield,
 					cuisine: cookrData.recipeCuisine,
 					category: cookrData.recipeCategory,

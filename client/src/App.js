@@ -35,7 +35,7 @@ const App = () => {
 				<Route path="/recipes" element={<Dashboard curRecipe={curRecipe} setCurRecipe={setCurRecipe} />} />
 				<Route path="/about" Component={About} />
 				<Route path="/credits" Component={Credits} />
-				<Route path="/:username" Component={Profile} />
+				<Route path="/:username" element={<Profile setCurRecipe={setCurRecipe} />} />
 				<Route
 					path="/:username/:title"
 					element={<Recipe curRecipe={curRecipe} setCurRecipe={setCurRecipe} />}
