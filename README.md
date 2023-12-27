@@ -7,6 +7,9 @@ Cooking should be an accessible and enjoyable experience for all, and so here is
 -   Users can edit existing recipes after pasting the links, altering certain attributes
 -   Recipe ingredients can all be converted to grams with the click of a button
 
+![homepage of Easier Recipe](https://imgur.com/UZyEUdg)
+![personal cookbook](https://imgur.com/undefined)
+
 Current features I am working on implementing:
 
 -   Support for more variable units
