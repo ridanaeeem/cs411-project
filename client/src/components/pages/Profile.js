@@ -6,7 +6,7 @@ import { FullPage } from "./Home";
 import { Subheading } from "./Dashboard";
 import { Tagline } from "./Dashboard";
 
-export function Profile() {
+export function Profile({ setCurRecipe }) {
 	// dispatch an action to the redux store
 	const dispatch = useDispatch();
 
@@ -22,7 +22,7 @@ export function Profile() {
 			<Subheading>
 				<Tagline>Welcome to your online cookbook!</Tagline>
 			</Subheading>
-			<YourRecipeCards></YourRecipeCards>
+			<YourRecipeCards setCurRecipe={setCurRecipe}></YourRecipeCards>
 			<div></div>
 		</FullPage>
 	);
