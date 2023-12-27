@@ -1,5 +1,7 @@
 Easier Recipe is a platform made for recipe storage and sharing!
 
+<img src="https://i.imgur.com/UZyEUdg.png" />
+
 Cooking should be an accessible and enjoyable experience for all, and so here is some of the current functionality of this website:
 
 -   Allow users to view a catalogue of recipes submitted by other users
@@ -7,7 +9,7 @@ Cooking should be an accessible and enjoyable experience for all, and so here is
 -   Users can edit existing recipes after pasting the links, altering certain attributes
 -   Recipe ingredients can all be converted to grams with the click of a button
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="UZyEUdg"><a href="https://imgur.com/UZyEUdg">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<img src="https://i.imgur.com/4m5rrSe.png" />
 
 Current features I am working on implementing:
 
